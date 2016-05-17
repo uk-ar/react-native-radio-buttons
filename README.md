@@ -18,11 +18,9 @@ This module relies on ES6 modules, you should add the whitelist instruction in y
 
 ```sh
 git clone git@github.com:ArnaudRinquin/react-native-radio-buttons.git
-cd react-native-buttons
+cd react-native-radio-buttons
 npm run demo
 ```
-
-And press `Cmd + R`
 
 ## Usage
 
@@ -43,10 +41,10 @@ render() {
     this.setState({
       selectedOption
     });
-  };
+  }
 
   function renderOption(option, selected, onSelect, index){
-    const style = selected ? { fontWeight: 'bold'} : {}
+    const style = selected ? { fontWeight: 'bold'} : {};
 
     return (
       <TouchableWithoutFeedback onPress={onSelect} key={index}>
@@ -69,8 +67,7 @@ render() {
         renderContainer={ renderContainer }
       />
       <Text>Selected option: {this.state.selectedOption || 'none'}</Text>
-    </View>)
-  ;
+    </View>);
 }
 
 ```
@@ -82,9 +79,10 @@ Will render this
 ## Props
 
 * `options - []` mandatory array of anything, will be passed to `renderOption`
-* `onSelection - function(option){}` option selection callback
+* `onSelection - function(selectedOption, selectedIndex){}` option selection callback
+* `selectedIndex - index` the  initially selected index, optional.
 * `selectedOption - option` the initially selected option, optional
-* `renderOption - function(option, selected, onSelect, index)` should return an option node, default generate `<Text>` nodes and adds `{fontWieght:'bold'}` to the selected option.
+* `renderOption - function(option, selected, onSelect, index)` should return an option node, default generate `<Text>` nodes and adds `{fontWeight:'bold'}` to the selected option.
 * `renderContainer - function(optionsNodes)` must render the container, default is RadioButtons.renderVerticalContainer (see below)
 
 ### Full javascript SegmentedControls clone
@@ -103,7 +101,7 @@ import { SegmentedControls } from 'react-native-radio-buttons'
 />
 ```
 
-You override al the defaults through the props.
+You override all the defaults through the props.
 
 ```jsx
 <SegmentedControls
@@ -145,6 +143,8 @@ const DEFAULTS = {
 
 }
 ```
+
+You can also specify `containerStyle` to use any style you want.
 
 You can also specify how to extract the labels from the options through the extractText prop.
 
